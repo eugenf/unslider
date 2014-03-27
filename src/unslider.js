@@ -105,9 +105,12 @@
 					_.r && clearTimeout(_.r);
 
 					_.r = setTimeout(function() {
-						var styl = {height: li.eq(_.i).outerHeight()},
-							width = el.outerWidth();
-
+						var width = el.outerWidth(),
+							styl;
+						// text slides does not resize automatically
+						// so we need to resize them with a line of code
+						li.css('width', width + 'px')
+						styl = {height: li.eq(_.i).outerHeight()},
 						ul.css(styl);
 						styl['width'] = Math.min(Math.round((width / el.parent().width()) * 100), 100) + '%';
 						el.css(styl);
